@@ -1,0 +1,55 @@
+<div class=container>
+    <form name="signUpForm" >
+    <div class="row">
+        <h2>Sign Up for Newsletter</h2>
+
+        <p>
+            <label>First Name: </label> <br>
+            <input type="text" name="firstName" size=60 minlength="3" ng-model="signUpCtrl.firstName" style="color:#050505" required> <br>
+            <span ng-if="(signUpForm.firstName.$error.minlength || signUpForm.firstName.$error.required) && signUpForm.firstName.$touched"
+                  style="color:white;background-color:red">First name must be at least 3 characters</span>
+        </p>
+
+        <p>
+            <label>Last Name: </label> <br>
+            <input type="text" name="lastName" size=60 minlength="3" ng-model="signUpCtrl.lastName" style="color:#050505" required> <br>
+            <span ng-if="(signUpForm.lastName.$error.minlength || signUpForm.lastName.$error.required) && signUpForm.lastName.$touched"
+                  style="color:white;background-color:red">Last name must be at least 3 characters</span>
+        </p>
+
+        <p>
+            <label>E-Mail: </label> <br>
+            <input type="email" name="eMail" size=60 minlength="3" ng-model="signUpCtrl.eMail" style="color:#050505" required> <br>
+            <span ng-if="(signUpForm.eMail.$invalid || signUpForm.eMail.$error.required) && signUpForm.eMail.$touched"
+                  style="color:white;background-color:red">E-Mail is invalid</span>
+        </p>
+
+        <p>
+            <label>Phone Number: <small>Format: 123-456-7890</small> </label> <br>
+            <input type="text" inputmode="numeric" size=60 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="phoneNumber"
+                   ng-model="signUpCtrl.phoneNumber" style="color:#050505" required> <br>
+            <span ng-if="(signUpForm.phoneNumber.$invalid || signUpForm.phoneNumber.$error.required) && signUpForm.phoneNumber.$touched"
+                  style="color:white;background-color:red">The phone number must have at least 6 and a maximum of 9 digits</span>
+        </p>
+
+        <p>
+            <label>Favorite Dish: </label> <br>
+            <input type="text" name="menuNumber" size=60 minlength="2" maxlength="4" ng-model="signUpCtrl.menuNumber" style="color:#050505" required> <br>
+            <span ng-if="(signUpForm.menuNumber.$error.minlength || signUpForm.menuNumber.$error.required) && signUpForm.menuNumber.$touched"
+                  style="color:white;background-color:red">The Dish Sortname consists of one or two letters followed by one or two numbers</span>
+            <span ng-if= "signUpCtrl.dishNotFound" style="color:white;background-color:red">The Dish not found</span>
+        </p>
+
+        <p>
+            <button class="btn btn-primary pull-left" ng-disabled="signUpForm.$invalid"
+                    ng-click="signUpCtrl.signUp($event)">Sign up
+            </button>
+        </p>
+
+        <p>
+            <span ng-if= "signUpCtrl.registrationSuccessful" style="color:white;background-color:green">The registration was successful</span>
+        </p>
+
+    </div>
+    </form>
+</div>
